@@ -1,0 +1,27 @@
+package com.example.factory.controller;
+
+import com.example.factory.entity.Machine;
+import com.example.factory.service.MachineService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/machines")
+public class MachineController {
+    private final MachineService machineService;
+
+    public MachineController(MachineService machineService) {
+        this.machineService = machineService;
+    }
+
+    @GetMapping
+    public List<Machine> getAllMachines() {
+        return machineService.getAllMachines();
+    }
+
+    @PostMapping
+    public Machine addMachine(@RequestBody Machine machine) {
+        return machineService.addMachine(machine);
+    }
+}
