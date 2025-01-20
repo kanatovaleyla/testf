@@ -1,0 +1,24 @@
+package com.example.factory.service;
+
+import com.example.factory.entity.Machine;
+import com.example.factory.repository.MachineRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class MachineService {
+    private final MachineRepository machineRepository;
+
+    public MachineService(MachineRepository machineRepository) {
+        this.machineRepository = machineRepository;
+}
+
+    public List<Machine> getAllMachines() {
+        return machineRepository.findAll();
+    }
+
+    public Machine addMachine(Machine machine) {
+        return machineRepository.save(machine);
+    }
+}
