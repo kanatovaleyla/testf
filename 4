@@ -1,0 +1,39 @@
+package com.example.library.service;
+
+import com.example.library.entity.Book;
+import com.example.library.repository.BookRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class BookService {
+    private final BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    public Book addBook(Book book) {
+        return bookRepository.save(book);
+    }
+public List<Book> getAvailableBooks() {
+        return bookRepository.findByAvailable(true);
+    }
+
+    public void borrowBook(Long bookId) {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
+        book.setAvailable(false);
+        bookRepository.save(book);
+    }
+
+    public void returnBook(Long bookId) {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
+        book.setAvailable(true);
+        bookRepository.save(book);
+    }
+}
