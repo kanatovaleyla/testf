@@ -1,0 +1,24 @@
+src
+ └── main
+     ├── java
+     │    └── com.example.factory
+     │         ├── entity
+     │         │    ├── Machine.java
+     │         │    ├── Employee.java
+     │         │    └── Product.java
+     │         ├── repository
+     │         │    ├── MachineRepository.java
+     │         │    ├── EmployeeRepository.java
+     │         │    └── ProductRepository.java
+     │         ├── service
+     │         │    ├── MachineService.java
+     │         │    ├── EmployeeService.java
+     │         │    └── ProductService.java
+     │         ├── controller
+     │         │    ├── MachineController.java
+     │         │    ├── EmployeeController.java
+     │         │    └── ProductController.java
+     │         └── FactoryApplication.java
+     └── resources
+          ├── application.properties
+          └── data.sql (optional: prepopulate database)
