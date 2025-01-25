@@ -1,0 +1,34 @@
+
+CarFactoryApp/
+│
+├── src/
+│   ├── controller/
+│   │   ├── CarController.java
+│   │   ├── FactoryController.java
+│   │
+│   ├── model/
+│   │   ├── Car.java
+│   │   ├── Employee.java
+│   │   ├── CarProducingMachine.java
+│   │
+│   ├── repository/
+│   │   ├── CarRepository.java
+│   │   ├── EmployeeRepository.java
+│   │   ├── CarProducingMachineRepository.java
+│   │
+│   ├── service/
+│   │   ├── CarService.java
+│   │   ├── EmployeeService.java
+│   │   ├── MachineService.java
+│   │
+│   ├── Main.java
+│
+├── resources/
+│   ├── database/
+│   │   ├── CarTable.sql
+│   │   ├── EmployeeTable.sql
+│   │   ├── MachineTable.sql
+│   │
+├── pom.xml  (for Maven dependencies if used)
+├── build.gradle (for Gradle dependencies if used)
+└── README.md
