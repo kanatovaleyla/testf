@@ -1,0 +1,7 @@
+CREATE TABLE Cars (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    engine_type VARCHAR(50),
+    price DECIMAL(10, 2),
+    production_year INT
+);
