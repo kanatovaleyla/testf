@@ -1,0 +1,49 @@
+package repository;
+
+import model.Car;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CarRepository {
+    private static final String URL = "jdbc:mysql://localhost:3306/car_factory";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+
+    public Connection connect() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
+    public void addCar(Car car) {
+        String query = "INSERT INTO Cars (name, engine_type, price, production_year) VALUES (?, ?, ?, ?)";
+        try (Connection conn = connect(); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, car.getName());
+            stmt.setString(2, car.getEngineType());
+            stmt.setBigDecimal(3, car.getPrice());
+            stmt.setInt(4, car.getProductionYear());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Car> getAllCars() {
+        String query = "SELECT * FROM Cars";
+        List<Car> cars = new ArrayList<>();
+        try (Connection conn = connect(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                cars.add(new Car(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("engine_type"),
+                        rs.getBigDecimal("price"),
+                        rs.getInt("production_year")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cars;
+    }
+}
