@@ -1,0 +1,19 @@
+CarFactoryApp
+│
+├── controller
+│   └── CarController.java
+│
+├── repository
+│   └── CarRepository.java
+│
+├── service
+│   └── CarService.java
+│
+├── model
+│   └── Car.java
+│   └── Engine.java
+│
+├── database
+│   └── CarTable.sql
+│
+└── Main.java
